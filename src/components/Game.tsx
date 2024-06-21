@@ -4,12 +4,14 @@ import { validateMoves } from "../utils/validateMoves";
 import { genMoves } from "../utils/generateMove";
 import { GameOverModal } from "./GameOverModal";
 import { Board } from "./Board";
+import { motion, AnimatePresence } from "framer-motion";
 
 type GameProps = {
   difficulty: number;
+  showBoard: boolean;
 };
 
-export const Game = ({ difficulty }: GameProps) => {
+export const Game = ({ difficulty, showBoard }: GameProps) => {
   const [moves, setMoves] = useState<number[]>(() =>
     genMoves({ arr: [], min: 1, max: difficulty }),
   );
@@ -63,15 +65,27 @@ export const Game = ({ difficulty }: GameProps) => {
   };
 
   return (
-    <div>
-      <GameOverModal isOpen={message === "Game Over"} onClose={handleRestart} />
-      {<Status message={message} />}
-      <Board
-        activeBox={activeBox}
-        isDisabled={isDisabled}
-        BoxClickAction={handleBoxClick}
-        difficulty={difficulty}
-      />
-    </div>
+    <AnimatePresence>
+      {showBoard && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <GameOverModal
+            isOpen={message === "Game Over"}
+            onClose={handleRestart}
+          />
+          {<Status message={message} />}
+          <Board
+            activeBox={activeBox}
+            isDisabled={isDisabled}
+            BoxClickAction={handleBoxClick}
+            difficulty={difficulty}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

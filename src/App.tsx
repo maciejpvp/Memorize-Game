@@ -6,10 +6,19 @@ import { BackButton } from "./components/BackButton";
 
 const App = () => {
   const [isGame, setIsGame] = useState<boolean>(false);
+  const [showBoard, setShowBoard] = useState<boolean>(false);
   const [isSettings, setIsSettings] = useState<boolean>(false);
   const [difficulty, setDifficulty] = useState<number>(4);
+
   const handleStartGame = () => {
-    setIsGame((prev) => !prev);
+    setShowBoard((prev) => !prev);
+    if (isGame) {
+      setTimeout(() => {
+        setIsGame((prev) => !prev);
+      }, 300);
+    } else {
+      setIsGame((prev) => !prev);
+    }
   };
 
   const handleSettings = () => {
@@ -22,7 +31,7 @@ const App = () => {
 
   return (
     <div className="h-svh bg-zinc-900 flex justify-center items-center">
-      {!isGame && (
+      {!isGame && !showBoard && (
         <MainMenu
           startGameAction={handleStartGame}
           showSettingsAction={handleSettings}
@@ -36,7 +45,7 @@ const App = () => {
       />
       {isGame && (
         <>
-          <Game difficulty={difficulty} />
+          <Game difficulty={difficulty} showBoard={showBoard} />
           <BackButton GoBackAction={handleStartGame} />
         </>
       )}

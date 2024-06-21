@@ -17,12 +17,32 @@ export const Button = ({
   active = false,
 }: ButtonProps) => {
   const classNameNormal = "bg-zinc-300 rounded-sm py-1 text-zinc-700 w-full";
-  const classNameReverse = `bg-zinc-700 px-3 rounded-xl py-2 ${active ? "bg-zinc-200 text-zinc-700" : ""}`;
+  const classNameReverse = `px-3 rounded-xl py-2`;
+  if (reverse) {
+    return (
+      <motion.button
+        onClick={onClick}
+        disabled={disabled}
+        className={classNameReverse}
+        initial={{
+          backgroundColor: active ? "rgb(212 212 216)" : "rgb(24 24 27)",
+          color: active ? "rgb(24 24 27)" : "rgb(212 212 216)",
+        }}
+        animate={{
+          backgroundColor: active ? "rgb(212 212 216)" : "rgb(24 24 27)",
+          color: active ? "rgb(24 24 27)" : "rgb(212 212 216)",
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        {children}
+      </motion.button>
+    );
+  }
   return (
     <motion.button
       onClick={onClick}
       disabled={disabled}
-      className={`${reverse ? classNameReverse : classNameNormal}`}
+      className={classNameNormal}
     >
       {children}
     </motion.button>
