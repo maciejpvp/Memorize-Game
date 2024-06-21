@@ -10,7 +10,7 @@ const Box = ({ id, active, disabled, onClick }: BoxProps) => {
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`bg-stone-900 active:bg-stone-950  transition-all duration-300 w-24 h-24 flex justify-center items-center text-xl text-stone-200 ${active ? "bg-yellow-400 text-stone-900" : ""} ${disabled ? "cursor-pointer" : "hover:bg-stone-400 cursor-default"} `}
+      className={`relative bg-stone-900 active:bg-stone-950 transition-all duration-300 w-16 h-16 sm:w-24 sm:h-24 flex justify-center items-center text-xl text-stone-200 ${active ? "bg-yellow-400 text-stone-900" : ""} ${disabled ? "cursor-pointer" : "hover-effect cursor-default"} `}
     >
       {id}
     </button>

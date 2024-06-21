@@ -17,7 +17,7 @@ export const Button = ({
   active = false,
 }: ButtonProps) => {
   const classNameNormal = "bg-zinc-300 rounded-sm py-1 text-zinc-700 w-full";
-  const classNameReverse = `bg-zinc-700 px-3 rounded-xl py-2 ${active ? "bg-zinc-100 text-zinc-700" : ""}`;
+  const classNameReverse = `bg-zinc-700 px-3 rounded-xl py-2 ${active ? "bg-zinc-200 text-zinc-700" : ""}`;
   return (
     <motion.button
       onClick={onClick}

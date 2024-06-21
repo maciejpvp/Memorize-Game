@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Game } from "./components/Game";
 import { MainMenu } from "./components/MainMenu";
 import { SettingsModal } from "./components/SettingsModal";
+import { BackButton } from "./components/BackButton";
 
 const App = () => {
   const [isGame, setIsGame] = useState<boolean>(false);
@@ -33,7 +34,12 @@ const App = () => {
         difficultyChangeAction={handleChangeDifficulty}
         difficulty={difficulty}
       />
-      {isGame && <Game difficulty={difficulty} />}
+      {isGame && (
+        <>
+          <Game difficulty={difficulty} />
+          <BackButton GoBackAction={handleStartGame} />
+        </>
+      )}
     </div>
   );
 };
