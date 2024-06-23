@@ -8,7 +8,7 @@ const App = () => {
   const [isGame, setIsGame] = useState<boolean>(false);
   const [showBoard, setShowBoard] = useState<boolean>(false);
   const [isSettings, setIsSettings] = useState<boolean>(false);
-  const [difficulty, setDifficulty] = useState<number>(4);
+  const [boxes, setBoxes] = useState<number>(4);
 
   const handleStartGame = () => {
     setShowBoard((prev) => !prev);
@@ -26,7 +26,7 @@ const App = () => {
   };
 
   const handleChangeDifficulty = (value: number) => {
-    setDifficulty(value);
+    setBoxes(value);
   };
 
   return (
@@ -41,11 +41,11 @@ const App = () => {
         isOpen={isSettings}
         onClose={handleSettings}
         difficultyChangeAction={handleChangeDifficulty}
-        difficulty={difficulty}
+        difficulty={boxes}
       />
       {isGame && (
         <>
-          <Game difficulty={difficulty} showBoard={showBoard} />
+          <Game difficulty={boxes} showBoard={showBoard} />
           <BackButton GoBackAction={handleStartGame} />
         </>
       )}

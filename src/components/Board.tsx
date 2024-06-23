@@ -1,6 +1,4 @@
-import { Easy } from "./levels/Easy";
-import { Hard } from "./levels/Hard";
-import { Medium } from "./levels/Medium";
+import Box from "./Box";
 
 export type BoardProps = {
   activeBox: number | null;
@@ -15,32 +13,21 @@ export const Board = ({
   BoxClickAction,
   difficulty = 9,
 }: BoardProps) => {
-  switch (difficulty) {
-    case 4:
-      return (
-        <Easy
-          activeBox={activeBox}
-          isDisabled={isDisabled}
-          BoxClickAction={BoxClickAction}
-        />
-      );
-    case 9:
-      return (
-        <Medium
-          activeBox={activeBox}
-          isDisabled={isDisabled}
-          BoxClickAction={BoxClickAction}
-        />
-      );
-    case 16:
-      return (
-        <Hard
-          activeBox={activeBox}
-          isDisabled={isDisabled}
-          BoxClickAction={BoxClickAction}
-        />
-      );
-    default:
-      return null;
-  }
+  return (
+    <div
+      className={`bg-zinc-800 grid grid-cols-${Math.sqrt(difficulty)} gap-2 w-auto h-auto p-4 rounded-lg justify-items-center items-center`}
+    >
+      {[...Array(difficulty).keys()]
+        .map((i) => i + 1)
+        .map((i) => (
+          <Box
+            key={i}
+            id={i}
+            active={activeBox === i}
+            disabled={isDisabled}
+            onClick={() => BoxClickAction(i)}
+          />
+        ))}
+    </div>
+  );
 };
