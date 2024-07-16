@@ -1,6 +1,6 @@
 import { Button } from "./Button";
 import { ChangeSettings } from "./ChangeSettings";
-import Modal from "./Modal";
+import {Modal} from "./Modal";
 
 type SettingsModalProps = {
   onClose?: () => void;

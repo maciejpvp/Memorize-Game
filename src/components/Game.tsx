@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Status from "./Status";
+import {Status} from "./Status";
 import { validateMoves } from "../utils/validateMoves";
 import { genMoves } from "../utils/generateMove";
 import { GameOverModal } from "./GameOverModal";

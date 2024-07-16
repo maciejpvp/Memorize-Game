@@ -3,6 +3,10 @@
 @tailwind utilities;
 @import "@fontsource/montserrat";
 
+body {
+  background-color: rgb(24 24 27);
+}
+
 @media (hover: hover) and (pointer: fine) {
   .hover-effect::before {
     content: "";

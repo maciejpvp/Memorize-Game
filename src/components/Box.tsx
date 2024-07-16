@@ -5,7 +5,7 @@ type BoxProps = {
   onClick: () => void;
 };
 
-const Box = ({ id, active, disabled, onClick }: BoxProps) => {
+export const Box = ({ id, active, disabled, onClick }: BoxProps) => {
   return (
     <button
       disabled={disabled}
@@ -16,5 +16,3 @@ const Box = ({ id, active, disabled, onClick }: BoxProps) => {
     </button>
   );
 };
-
-export default Box;

@@ -1,4 +1,4 @@
-import Box from "./Box";
+import {Box} from "./Box";
 
 export type BoardProps = {
   activeBox: number | null;
@@ -13,6 +13,7 @@ export const Board = ({
   BoxClickAction,
   difficulty = 9,
 }: BoardProps) => {
+  if (!difficulty) return null;
   return (
     <div
       className={`bg-zinc-800 grid grid-cols-${Math.sqrt(difficulty)} gap-2 w-auto h-auto p-4 rounded-lg justify-items-center items-center`}

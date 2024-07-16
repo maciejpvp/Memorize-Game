@@ -6,7 +6,7 @@ type ModalProps = {
   children: ReactNode;
 };
 
-const Modal = ({ isOpen, children }: ModalProps) => {
+export const Modal = ({ isOpen, children }: ModalProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -34,4 +34,3 @@ const Modal = ({ isOpen, children }: ModalProps) => {
   );
 };
 
-export default Modal;
